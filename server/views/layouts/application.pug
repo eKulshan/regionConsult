@@ -1,0 +1,33 @@
+include ../mixins/forms.pug
+
+doctype html
+html(lang="en").h-100
+  head
+    title Test task
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js", integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV", crossorigin="anonymous")
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css", integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z", crossorigin="anonymous")
+  body.h-100.d-flex.flex-column
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light.mb-3
+      a.navbar-brand(href=route('root'))= t('appName')
+      button.navbar-toggler(data-toggle="collapse" data-target="#navbarSupportedContent")
+        span.navbar-toggler-icon
+      .collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item
+            a.nav-link(href=route('users'))= t('layouts.application.users')
+        ul.navbar-nav
+          li.nav-item
+            a.nav-link(href=route('newUser'))= t('layouts.application.signUp')
+    .container.h-100
+
+      //- each messages, type in reply.flash() || []
+      //-   each message in messages
+      //-     div.alert(class=`alert-${getAlertClass(type)}`)= message
+
+      h1.my-4
+        block header
+      block content
+
+    footer.footer.mt-100
+      .container.my-5.pt-4.border-top
+        a(target="_blank" href="https://github.com/eKulshan/regionConsult") GitHub

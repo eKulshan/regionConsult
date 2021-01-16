@@ -1,0 +1,17 @@
+extends ../layouts/application
+
+block header
+  h1= 'Пользователи'
+block content
+  table.table.table-hover.border.border-grey
+    thead.thead-light
+      tr
+        th(scope='col')= t('views.users.id')
+        th(scope='col')= t('views.users.email')
+        th(scope='col')= t('views.users.createdAt')
+    tbody
+      each user in users
+        tr
+          td= user.id
+          td= user.email
+          td= user.createdAt  

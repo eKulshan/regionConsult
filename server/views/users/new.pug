@@ -1,0 +1,10 @@
+extends ../layouts/application.pug
+
+block header
+  = t('views.users.new.signUp')
+
+block content
+  +formFor()(action=route('users') method='post')
+    +input(user, t('views.users.new.email'), 'email', errors)(type="text")
+    +input(user, t('views.users.new.password'), 'password', errors)(type="password")
+    +submit(user)(value=t('views.users.new.submit'))
