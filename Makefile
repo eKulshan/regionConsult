@@ -5,10 +5,7 @@ lint:
 	npx eslint .
 
 test:
-	npm test -s
+	npm test -s --experimental-vm-modules
 	
-test-coverage:
-	npm test -- --coverage --coverageProvider=v8
-
 dev: 
 	npx nodemon ./server/bin/server.js
