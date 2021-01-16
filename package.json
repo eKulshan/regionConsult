@@ -20,13 +20,18 @@
   "dependencies": {
     "fastify": "^3.10.1",
     "fastify-formbody": "^5.0.0",
+    "fastify-objectionjs": "^0.3.0",
     "fastify-reverse-routes": "^2.0.0",
     "i18next": "^19.8.4",
+    "knex": "^0.21.15",
     "lodash": "^4.17.20",
+    "objection": "^2.2.7",
+    "objection-unique": "^1.2.1",
     "pino-pretty": "^4.3.0",
     "point-of-view": "^4.8.0",
     "pug": "^3.0.0",
-    "qs": "^6.9.6"
+    "qs": "^6.9.6",
+    "sqlite3": "^5.0.0"
   },
   "devDependencies": {
     "eslint": "^7.14.0",

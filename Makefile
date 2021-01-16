@@ -9,3 +9,14 @@ test:
 	
 dev: 
 	npx nodemon ./server/bin/server.js
+
+dev-db:
+	make db-migrate db-seed
+
+db-migrate:
+	npx knex --esm migrate:latest
+
+db-seed:
+	npx knex --esm seed:run
+
+

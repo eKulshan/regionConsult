@@ -6,11 +6,16 @@ import fastifyReverseRoutes from 'fastify-reverse-routes';
 import qs from 'qs';
 import Pug from 'pug';
 import i18next from 'i18next';
+import fastifyObjectionjs from 'fastify-objectionjs';
 import { fileURLToPath } from 'url';
+
 import addRoutes from './routes/index.js';
 import getHelpers from './helpers/index.js';
 import ru from './locales/ru.js';
+import knexConfig from '../knexfile.js';
+import models from './models/index.js';
 
+const mode = process.env.NODE_ENV || 'development';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -47,6 +52,10 @@ const setupLocalization = () => {
 const registerPlugins = (app) => {
   app.register(fastifyReverseRoutes.plugin);
   app.register(fastifyFormbody, { parser: qs.parse });
+  app.register(fastifyObjectionjs, {
+    knexConfig: knexConfig[mode],
+    models,
+  });
 };
 
 export default () => {
