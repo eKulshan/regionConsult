@@ -11,8 +11,6 @@ export default (app) => ({
   _,
   getAlertClass(type) {
     switch (type) {
-      // case 'failure':
-      //   return 'danger';
       case 'error':
         return 'danger';
       case 'success':
@@ -22,9 +20,5 @@ export default (app) => ({
       default:
         throw new Error(`Unknown flash type: '${type}'`);
     }
-  },
-  formatDate(str) {
-    const date = new Date(str);
-    return date.toLocaleString();
   },
 });
