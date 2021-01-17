@@ -16,13 +16,24 @@ html(lang="en").h-100
           li.nav-item
             a.nav-link(href=route('users'))= t('layouts.application.users')
         ul.navbar-nav
-          li.nav-item
-            a.nav-link(href=route('newUser'))= t('layouts.application.signUp')
+          if isAuthenticated()
+            li.nav-item
+              form(action=`/users/${id}/edit`, method="get")
+                input(type='submit' class="btn nav-link" value=t('layouts.application.updateProfile'))
+            li.nav-item
+              +buttonTo(`/users/${id}`, 'delete')(class="btn nav-link" value=t('layouts.application.deleteProfile') onclick= "return confirm('Вы подтверждаете удаление?')")
+            li.nav-item
+              +buttonTo(route('session'), 'delete')(class="btn nav-link" value=t('layouts.application.signOut'))
+          else
+            li.nav-item
+              a.nav-link(href=route('newSession'))= t('layouts.application.signIn')
+            li.nav-item
+              a.nav-link(href=route('newUser'))= t('layouts.application.signUp')
     .container.h-100
 
-      //- each messages, type in reply.flash() || []
-      //-   each message in messages
-      //-     div.alert(class=`alert-${getAlertClass(type)}`)= message
+      each messages, type in reply.flash() || []
+        each message in messages
+          div.alert(class=`alert-${getAlertClass(type)}`)= message
 
       h1.my-4
         block header
