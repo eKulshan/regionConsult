@@ -1,9 +1,11 @@
-export const up = async (knex) => {
-  await knex.schema.createTable('users', (table) => {
+exports.up = (knex) => (
+  knex.schema.createTable('users', (table) => {
     table.increments('id').primary();
     table.string('email');
     table.string('password_digest');
-    table.timestamp('created_at', { useTz: false }).defaultTo(knex.fn.now());
+    table.timestamp('created_at').defaultTo(knex.fn.now());
+    table.timestamp('updated_at').defaultTo(knex.fn.now());
   })
-}
-export const down = async (knex) => await knex.schema.dropTable('users');
+);
+
+exports.down = (knex) => knex.schema.dropTable('users');

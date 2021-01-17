@@ -1,4 +1,4 @@
-export const seed = async (knex) => {
+exports.seed = async (knex) => {
   await knex('users').del();
   await knex('users').insert([
     {
@@ -10,4 +10,4 @@ export const seed = async (knex) => {
       password_digest: '3eed0f33297699415de55d2d980e60d30869bf6564e2055b62173d368974a149',
     },
   ]);
-}
+};

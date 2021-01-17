@@ -1,22 +1,25 @@
 install:
 	npm install
 
-lint:
-	npx eslint .
-
-test:
-	npm test -s --experimental-vm-modules
-	
-dev: 
-	npx nodemon ./server/bin/server.js
+setup: install dev-db
 
 dev-db:
 	make db-migrate db-seed
 
 db-migrate:
-	npx knex --esm migrate:latest
+	npx knex migrate:latest
 
 db-seed:
-	npx knex --esm seed:run
+	npx knex seed:run
 
+start:
+	npx babel-node server/bin/server.js
 
+dev: 
+	npx nodemon --exec npx babel-node server/bin/server.js
+
+lint:
+	npx eslint .
+
+test:
+	npm test -s
